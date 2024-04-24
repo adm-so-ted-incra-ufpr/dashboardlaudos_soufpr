@@ -4,7 +4,7 @@ from datetime import datetime
 import plotly.express as px
 
 # Carregar os dados do Excel
-file_path = "laudos_SO_sharepoint_23042024.xlsx"
+file_path = "laudos_SO_sharepoint_24042024.xlsx"
 df = pd.read_excel(file_path)
 
 # Definir título do aplicativo
