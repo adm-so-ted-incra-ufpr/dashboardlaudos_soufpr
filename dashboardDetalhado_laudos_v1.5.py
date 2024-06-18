@@ -64,13 +64,12 @@ st.write(df)
 # Exibir gráfico interativo
 st.subheader("Gráfico de barras - tipo de laudo")
 chart_data = df['Tipo de Laudo'].value_counts()
-st.bar_chart(chart_data, labels={'Tipo de Laudo': 'Tipo de Laudo', 'value': 'Quantidade'})
+st.bar_chart(chart_data)
 
 # Gráfico de pizza
 st.subheader("Gráfico de pizza - tipo de laudo")
 pie_chart_data = df['Tipo de Laudo'].value_counts()
 fig = px.pie(names=pie_chart_data.index, values=pie_chart_data.values, title='Distribuição dos Laudos')
-fig.update_traces(textposition='inside', textinfo='percent+label')
 st.plotly_chart(fig)
 
 # Calcular o total de laudos para cada tipo de laudo
