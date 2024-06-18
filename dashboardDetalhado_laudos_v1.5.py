@@ -30,7 +30,6 @@ end_date = datetime.now().date()
 selected_tecnico = st.sidebar.selectbox("Selecione um técnico:", tecnicos)
 if selected_tecnico != "Todos":
     df = df[df['Técnico'] == selected_tecnico]
-    municipios = ['Todos'] + sorted(list(df['Município'].unique()))
 
 # Filtrar por município
 selected_municipio = st.sidebar.selectbox("Selecione um município:", municipios)
