@@ -1,1 +1,1 @@
-web: streamlit run dashboardDetalhado_laudos_v1.4.py
+web: streamlit run dashboardDetalhado_laudos_v1.5.py
