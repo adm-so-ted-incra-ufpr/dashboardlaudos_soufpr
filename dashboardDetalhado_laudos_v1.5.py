@@ -29,28 +29,27 @@ end_date = datetime.now().date()
 # Filtrar por técnico
 selected_tecnico = st.sidebar.selectbox("Selecione um técnico:", tecnicos)
 if selected_tecnico != "Todos":
-    df = df[df['Técnico'] == selected_tecnico]
+    municipios = ['Todos'] + sorted(list(df[df['Técnico'] == selected_tecnico]['Município'].unique()))
 
 # Filtrar por município
 selected_municipio = st.sidebar.selectbox("Selecione um município:", municipios)
 if selected_municipio != "Todos":
-    df = df[df['Município'] == selected_municipio]
-    assentamentos = ['Todos'] + sorted(list(df['Assentamento'].unique()))
+    assentamentos = ['Todos'] + sorted(list(df[(df['Técnico'] == selected_tecnico) & (df['Município'] == selected_municipio)]['Assentamento'].unique()))
 
 # Filtrar por assentamento
 selected_assentamento = st.sidebar.selectbox("Selecione um assentamento:", assentamentos)
-if selected_assentamento != "Todos":
-    df = df[df['Assentamento'] == selected_assentamento]
 
 # Filtrar por tipo de laudo
+if selected_assentamento != "Todos":
+    tipos_de_laudo = ['Todos'] + sorted(list(df[(df['Técnico'] == selected_tecnico) & (df['Município'] == selected_municipio) & (df['Assentamento'] == selected_assentamento)]['Tipo de Laudo'].unique()))
+
 selected_tipo_laudo = st.sidebar.selectbox("Selecione um tipo de laudo:", tipos_de_laudo)
-if selected_tipo_laudo != "Todos":
-    df = df[df['Tipo de Laudo'] == selected_tipo_laudo]
 
 # Filtrar por modalidade
+if selected_tipo_laudo != "Todos":
+    modalidade = ['Todos'] + sorted(list(df[(df['Técnico'] == selected_tecnico) & (df['Município'] == selected_municipio) & (df['Assentamento'] == selected_assentamento) & (df['Tipo de Laudo'] == selected_tipo_laudo)]['Modalidade'].unique()))
+
 selected_modalidade = st.sidebar.selectbox("Selecione uma modalidade:", modalidade)
-if selected_modalidade != "Todos":
-    df = df[df['Modalidade'] == selected_modalidade]
 
 # Filtrar por data
 start_date = st.sidebar.date_input("Data inicial:", start_date)
