@@ -4,7 +4,7 @@ from datetime import datetime
 import plotly.express as px
 
 # Carregar os dados do Excel
-file_path = "laudos_SO_sharepoint_20062024.xlsx"
+file_path = "laudos_SO_sharepoint_11032024.xlsx"
 df = pd.read_excel(file_path)
 
 # Definir título do aplicativo
@@ -13,12 +13,12 @@ st.title("(SO - TED INCRA/UFPR) - Laudos de Supervisão Ocupacional ")
 # Definir título da tabela com informações gerais sobre os laudos
 st.subheader("Relação de laudos (pesquisar nomes com underline)")
 
-# Listas de todos os técnicos, assentamentos, tipos de laudo e municípios
-tecnicos = ['Todos'] + sorted(list(df['Técnico'].unique()))
-assentamentos = ['Todos'] + sorted(list(df['Assentamento'].unique()))
-tipos_de_laudo = ['Todos'] + sorted(list(df['Tipo de Laudo'].unique()))
-municipios = ['Todos'] + sorted(list(df['Município'].unique()))
-modalidade = ['Todos'] + sorted(list(df['Modalidade'].unique()))
+# Lista de todos os técnicos, assentamentos, tipos de laudo e municípios
+tecnicos = ['Todos'] + list(df['Técnico'].unique())
+assentamentos = ['Todos'] + list(df['Assentamento'].unique())
+tipos_de_laudo = ['Todos'] + list(df['Tipo de Laudo'].unique())
+municipios = ['Todos'] + list(df['Município'].unique())
+modalidade = ['Todos'] + list(df['Modalidade'].unique())
 
 # Data inicial padrão: 01/01/2022
 start_date = datetime(2022, 1, 1).date()
@@ -35,7 +35,6 @@ if selected_tecnico != "Todos":
 selected_municipio = st.sidebar.selectbox("Selecione um município:", municipios)
 if selected_municipio != "Todos":
     df = df[df['Município'] == selected_municipio]
-    assentamentos = ['Todos'] + sorted(list(df['Assentamento'].unique()))
 
 # Filtrar por assentamento
 selected_assentamento = st.sidebar.selectbox("Selecione um assentamento:", assentamentos)
