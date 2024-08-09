@@ -5,7 +5,7 @@ import plotly.express as px
 import unicodedata
 
 # Carregar os dados do Excel
-file_path = "laudos_SO_sharepoint_23072024.xlsx"
+file_path = "laudos_SO_sharepoint_09082024.xlsx"
 df = pd.read_excel(file_path)
 
 # Definir título do aplicativo
